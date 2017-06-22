@@ -12,15 +12,15 @@ local: &local
 development:
   <<: *default
   <<: *local
-  database: generic-api_development
+  database: fanfic_development
 
 test:
   <<: *default
   <<: *local
-  database: generic-api_test
+  database: fanfic_test
 
 production:
   <<: *default
-  database: generic-api_production
-  username: generic-api
+  database: fanfic_production
+  username: fanfic
   password: <%= ENV['GENERIC-API_DATABASE_PASSWORD'] %>
