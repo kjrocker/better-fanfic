@@ -5,6 +5,8 @@ Rails.application.routes.draw do
       resources :users, only: [:create, :update, :show]
 
       resources :chapters
+
+      post 'chapter_preview' => "chapter_previews#create"
     end
   end
 

@@ -27,6 +27,9 @@ gem 'sidekiq'
 # Rust, because why not?
 gem 'helix-rails'
 
+# Markdown parsing
+gem 'redcarpet'
+
 group :development, :test do
   gem 'byebug', platform: :mri
   gem 'database_cleaner'
