@@ -1,13 +1,15 @@
-class ChapterPreviewsController < ApiController
-  def create
-    render json: {
-      safe_text: Renderer.call(params[:raw_text])
-    }
-  end
+module V1
+  class ChapterPreviewsController < ApiController
+    def create
+      render json: {
+        safe_text: Renderer.call(preview_params[:text])
+      }
+    end
 
-  private
+    private
 
-  def preview_params
-    params.require(:raw_text)
+    def preview_params
+      params.require(:chapter).permit(:title, :text)
+    end
   end
 end
