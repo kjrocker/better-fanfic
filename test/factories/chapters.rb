@@ -3,5 +3,6 @@ FactoryGirl.define do
     title "MyString"
     raw_text "MyText"
     user
+    story
   end
 end

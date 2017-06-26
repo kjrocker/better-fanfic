@@ -1,5 +1,6 @@
 class Chapter < ApplicationRecord
   belongs_to :user
+  belongs_to :story
 
   before_save :sanitize_text
 
