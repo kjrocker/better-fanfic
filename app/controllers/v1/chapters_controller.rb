@@ -6,7 +6,7 @@ module V1
     before_action :authorize_user, only: [:update, :destroy]
 
     def index
-      @chapters = @story.chapters
+      @chapters = @story.ordered_chapters
       render json: @chapters
     end
 
