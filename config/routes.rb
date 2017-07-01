@@ -4,7 +4,11 @@ Rails.application.routes.draw do
       post 'user_token' => 'user_token#create'
       resources :users, only: [:create, :update, :show]
 
-      resources :chapters
+      resources :stories do
+        resources :chapters, only: [:index, :create]
+      end
+
+      resources :chapters, except: [:index, :create]
 
       post 'chapter_preview' => "chapter_previews#create"
     end

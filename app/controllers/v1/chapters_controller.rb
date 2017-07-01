@@ -1,16 +1,17 @@
 module V1
   class ChaptersController < ApiController
     before_action :set_chapter, except: [:index, :create]
+    before_action :set_story, only: [:index, :create]
     before_action :authenticate_user, only: [:create, :update, :destroy]
     before_action :authorize_user, only: [:update, :destroy]
 
     def index
-      @chapters = Chapter.all
+      @chapters = @story.chapters
       render json: @chapters
     end
 
     def create
-      chapter = Chapter.new(chapter_params.merge(user: current_user))
+      chapter = Chapter.new(chapter_params.merge(user: current_user, story: @story))
       if chapter.save
         render json: {}, status: :created
       else
@@ -38,6 +39,10 @@ module V1
 
     def set_chapter
       @chapter = Chapter.find(params[:id])
+    end
+
+    def set_story
+      @story = Story.find(params[:story_id])
     end
 
     def authorize_user
