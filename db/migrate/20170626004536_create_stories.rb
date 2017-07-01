@@ -10,6 +10,8 @@ class CreateStories < ActiveRecord::Migration[5.1]
       t.timestamps
     end
 
+    add_column :chapters, :story_id, :integer
+    add_column :chapters, :number, :integer
     add_foreign_key :chapters, :stories, index: true
   end
 end
